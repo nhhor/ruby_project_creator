@@ -76,7 +76,7 @@ ascii_array = [ascii_gif1, ascii_gif2, ascii_gif3, ascii_gif4, ascii_gif5, ascii
 
 4.times do
   i = 1
-  while i < 9
+  while i < 4
     system "clear"
     ascii_array.each do |p|
       system "clear"
@@ -120,4 +120,29 @@ File.write("lib/#{dir_name}_backend.rb", "class #{class_name.upcase}\n\n  # attr
 Bundler.with_clean_env do
   `bundle install`
 end
-puts "~~~~~ bundle install ~~~~~"
+puts "~~~~~ bundle installed ~~~~~"
+
+puts "~~~~~ would you like to create a new GitHub Repository? (y/n) ~~~~~"
+gitHub_response = gets.chomp
+
+if gitHub_response == "n"
+  puts "~~~~~ Project completed! ~~~~~"
+  return
+elsif gitHub_response == "y"
+else
+  puts "~~~~~ Project completed! But GitHub aborted ~~~~~"
+  return
+end
+
+
+system "git init"
+system "git add ."
+system "git commit -m 'initialize Ruby project'"
+system "git init"
+system "git init"
+
+git commit -m "first commit"
+git remote add origin git@github.com:alexpchin/<reponame>.git
+git push -u origin master
+
+puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
